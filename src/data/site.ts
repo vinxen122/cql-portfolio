@@ -5,7 +5,6 @@ export const SITE = {
   tagline: '用数据与模型解决真实问题',
   email: '501778475@qq.com',
   phone: '135-6625-1500',
-  // TODO: 上线前替换为你的 GitHub 主页
-  github: 'https://github.com/cql-ai',
+  github: 'https://github.com/vinxen122',
   resume: '/曹乔量_AI工程师_简历.pdf',
 };

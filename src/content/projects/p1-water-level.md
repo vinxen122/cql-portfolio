@@ -17,7 +17,7 @@ metrics:
     label: 测试集 MAPE（目标）
   - value: "实时"
     label: 超警戒水位告警
-github: "https://github.com/cql-ai/water-level-forecast"
+github: "https://github.com/vinxen122/water-level-forecast"
 demo: ""
 ---
 
