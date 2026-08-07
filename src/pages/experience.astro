@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const items = [
+  {
+    period: '2025.09 – 至今',
+    title: '自学与项目实践',
+    org: '个人项目',
+    desc: '系统学习 Python、机器学习与 AI 应用开发；独立完成河道水位预测项目，持续推进水面漂浮物检测项目。',
+  },
+  {
+    period: '2023.09 – 2025.07',
+    title: '浙江同济科技职业学院',
+    org: '水利水电智能管理 · 专科',
+    desc: '核心课程：数据库系统导论、PLC 与电气智能控制、无人机应用技术、水利工程信息化管理、BIM 应用技术。',
+  },
+  {
+    period: '2023.09 – 2023.12',
+    title: '校青年志愿者协会',
+    org: '带队负责人',
+    desc: '多次带队组织校外志愿服务，负责人员分工与现场协调。',
+  },
+  {
+    period: '2023.09 – 2023.12',
+    title: '校公寓部',
+    org: '成员',
+    desc: '负责每周查寝排班与成员工时统计，用 Excel 建立数据台账，保证记录准确。',
+  },
+  {
+    period: '2023.06 – 2023.09 / 2024.01 – 2024.02',
+    title: '台球厅兼职',
+    org: '寒暑假工',
+    desc: '负责店员排班与区域分工，维护易耗品库存台账与卫生检查记录，养成规范化记录习惯。',
+  },
+];
+---
+
+<BaseLayout title="经历" description="CQL 的教育、项目与实践经历时间线。">
+  <div class="mx-auto max-w-3xl px-4 py-14 sm:px-6">
+    <p class="mb-3 font-mono text-sm text-accent">experience / 经历</p>
+    <h1 class="text-3xl font-bold sm:text-4xl">经历</h1>
+
+    <ol class="relative mt-10 space-y-10 border-l border-app pl-6">
+      {
+        items.map((item) => (
+          <li class="reveal relative">
+            <span class="absolute -left-[31px] top-1.5 h-3 w-3 rounded-full border-2 border-accent bg-app"></span>
+            <p class="font-mono text-xs text-accent">{item.period}</p>
+            <h2 class="mt-1 text-lg font-bold">{item.title}</h2>
+            <p class="text-sm text-muted">{item.org}</p>
+            <p class="mt-2 text-sm leading-relaxed text-muted">{item.desc}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</BaseLayout>

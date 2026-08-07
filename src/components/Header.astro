@@ -1,0 +1,103 @@
+---
+import { SITE } from '../data/site';
+
+const nav = [
+  { href: '/', label: '首页' },
+  { href: '/about/', label: '关于我' },
+  { href: '/projects/', label: '项目' },
+  { href: '/skills/', label: '技能' },
+  { href: '/experience/', label: '经历' },
+  { href: '/blog/', label: '博客' },
+  { href: '/contact/', label: '联系' },
+];
+
+const current = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-40 border-b border-app bg-app/85 backdrop-blur">
+  <div class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
+    <a href="/" class="flex items-center gap-2 text-lg font-bold" aria-label="回到首页">
+      <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-accent-soft font-mono text-sm text-accent">C</span>
+      {SITE.brand}
+    </a>
+
+    <nav class="hidden items-center gap-1 md:flex" aria-label="主导航">
+      {
+        nav.map((item) => (
+          <a
+            href={item.href}
+            class:list={[
+              'rounded-lg px-3 py-1.5 text-sm transition-colors',
+              current === item.href
+                ? 'bg-accent-soft text-accent'
+                : 'text-muted hover:bg-accent-soft hover:text-app',
+            ]}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <button
+        id="theme-toggle"
+        type="button"
+        aria-label="切换深浅色主题"
+        class="flex h-9 w-9 items-center justify-center rounded-lg border border-app text-muted transition-colors hover:text-app"
+      >
+        <svg class="block h-4 w-4 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="5" />
+          <line x1="12" y1="1" x2="12" y2="3" />
+          <line x1="12" y1="21" x2="12" y2="23" />
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+          <line x1="1" y1="12" x2="3" y2="12" />
+          <line x1="21" y1="12" x2="23" y2="12" />
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+        <svg class="hidden h-4 w-4 dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+      </button>
+      <a
+        href={SITE.resume}
+        download
+        class="hidden items-center gap-1.5 rounded-lg bg-accent px-3 py-1.5 text-sm font-medium text-slate-950 transition-opacity hover:opacity-85 sm:inline-flex"
+      >
+        下载简历
+      </a>
+    </div>
+  </div>
+
+  <nav class="flex gap-1 overflow-x-auto px-4 pb-2 md:hidden" aria-label="移动端导航">
+    {
+      nav.map((item) => (
+        <a
+          href={item.href}
+          class:list={[
+            'shrink-0 rounded-lg px-3 py-1.5 text-sm',
+            current === item.href ? 'bg-accent-soft text-accent' : 'text-muted',
+          ]}
+        >
+          {item.label}
+        </a>
+      ))
+    }
+    <a href={SITE.resume} download class="shrink-0 rounded-lg px-3 py-1.5 text-sm font-medium text-accent">
+      简历
+    </a>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.getElementById('theme-toggle');
+  toggle?.addEventListener('click', () => {
+    const root = document.documentElement;
+    root.classList.toggle('dark');
+    try {
+      localStorage.setItem('cql-theme', root.classList.contains('dark') ? 'dark' : 'light');
+    } catch (e) {}
+  });
+</script>

@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>曹乔量 · AI 工程师简历</title>
+  <style>
+    @page { size: A4; margin: 0; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+      color: #1f2937;
+      font-size: 10.5px;
+      line-height: 1.55;
+      width: 210mm;
+      height: 297mm;
+      overflow: hidden;
+      margin: 0 auto;
+      padding: 12mm 14mm;
+    }
+    header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2.5px solid #0891b2; padding-bottom: 6px; }
+    h1 { font-size: 24px; letter-spacing: 1px; }
+    .sub { color: #0e7490; font-weight: 600; margin-top: 2px; }
+    .contact { text-align: right; font-size: 10px; color: #4b5563; }
+    .contact div { margin-top: 1px; }
+    h2 {
+      font-size: 13px;
+      color: #0e7490;
+      margin: 12px 0 5px;
+      padding-left: 7px;
+      border-left: 3.5px solid #0891b2;
+    }
+    .row { display: flex; justify-content: space-between; }
+    .title { font-weight: 700; }
+    .org { color: #6b7280; }
+    .period { color: #4b5563; font-family: Consolas, monospace; font-size: 10px; }
+    ul { padding-left: 15px; }
+    li { margin: 2px 0; }
+    .tags { margin-top: 3px; color: #0e7490; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+    .skill { display: flex; gap: 6px; margin-bottom: 2px; }
+    .skill b { min-width: 92px; color: #374151; }
+    .p { text-indent: 2em; }
+    .muted { color: #6b7280; }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>曹乔量</h1>
+      <div class="sub">求职意向：AI 工程师（应用向）</div>
+    </div>
+    <div class="contact">
+      <div>电话：13X-XXXX-XXXX（待更新）</div>
+      <div>QQ 邮箱：501778475@qq.com</div>
+      <div>GitHub：github.com/cql-ai</div>
+      <div>出生：2005.07 ｜ 浙江杭州</div>
+    </div>
+  </header>
+
+  <section>
+    <h2>教育背景</h2>
+    <div class="row">
+      <span class="title">浙江同济科技职业学院 · 水利水电智能管理（专科）</span>
+      <span class="period">2023.09 – 2025.07</span>
+    </div>
+    <p class="muted" style="margin-top:3px">相关课程：数据库系统导论、PLC 与电气智能控制、无人机应用技术、水利工程信息化管理、BIM 应用技术</p>
+  </section>
+
+  <section>
+    <h2>项目经历</h2>
+    <div class="row">
+      <span class="title">河道水位智能预测系统</span>
+      <span class="period">2025.09 – 至今</span>
+    </div>
+    <div class="tags">Python · pandas · Prophet · PyTorch · ECharts · Gradio</div>
+    <ul>
+      <li>收集公开水文/气象数据，完成缺失值与异常值处理、特征工程，构建小时级水位时间序列；</li>
+      <li>以 Prophet 建立基线并实现 LSTM 模型对比，按时间顺序切分数据，测试集 MAPE &lt; 5%（目标值）；</li>
+      <li>用 Gradio 搭建可交互 Demo，ECharts 实现「历史 + 预测 + 警戒线」可视化大屏与超警戒自动告警。</li>
+    </ul>
+    <div class="row" style="margin-top:6px">
+      <span class="title">水面漂浮物检测（无人机视角）· 进行中</span>
+      <span class="period">预计 2026.10 完成</span>
+    </div>
+    <div class="tags">Python · YOLOv8 · OpenCV · 数据标注 · Gradio</div>
+    <ul>
+      <li>结合无人机应用专业背景，整理公开水面垃圾数据集并补充自采标注；</li>
+      <li>使用 YOLOv8 训练漂浮物检测模型，目标验证集 mAP50 ≥ 0.7，并提供图片/视频检测 Demo 与数量统计。</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>技能</h2>
+    <div class="grid2">
+      <div>
+        <div class="skill"><b>编程</b><span>Python（熟悉）、JavaScript/TypeScript（基础）</span></div>
+        <div class="skill"><b>机器学习</b><span>pandas/numpy、scikit-learn、PyTorch（入门）、YOLOv8</span></div>
+        <div class="skill"><b>数据与工程</b><span>SQL/MySQL、Git/GitHub、FastAPI（学习中）、Linux 基础</span></div>
+      </div>
+      <div>
+        <div class="skill"><b>行业背景</b><span>水利信息化、PLC 自动化、无人机遥感、BIM/CAD</span></div>
+        <div class="skill"><b>办公软技能</b><span>Excel 数据管理、组织协调、文档撰写、团队合作</span></div>
+        <div class="skill"><b>证书</b><span>英语 A 级、C1 驾驶证、AutoCAD/Revit 基础</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>在校与实践经历</h2>
+    <ul>
+      <li><b>校青年志愿者协会（2023.09 – 2023.12）</b>：多次带队组织校外志愿服务，负责人员分工与现场协调。</li>
+      <li><b>校公寓部（2023.09 – 2023.12）</b>：负责每周查寝排班与成员工时统计，用 Excel 建立数据台账。</li>
+      <li><b>台球厅寒暑假兼职（2023.06 – 2023.09 / 2024.01 – 2024.02）</b>：负责店员排班与区域分工，维护易耗品库存台账与卫生检查记录。</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>自我评价</h2>
+    <p class="p">水利水电智能管理专业出身，系统学习过数据库、PLC 自动化与行业信息化，具备传统行业数据场景的理解；2025 年起自学 Python、机器学习与 AI 应用开发，独立完成河道水位预测等落地项目。逻辑清晰、动手能力强，能从数据处理做到可演示应用，目标成为一名能在真实业务中落地的 AI 应用工程师。性格沉稳踏实，做事有始有终。</p>
+  </section>
+</body>
+</html>

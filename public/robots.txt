@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cql-ai.pages.dev/sitemap-index.xml

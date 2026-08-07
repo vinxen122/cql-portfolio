@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroChart from '../components/HeroChart.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { SITE } from '../data/site';
+import { getCollection } from 'astro:content';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const featured = projects[0];
+
+const sellingPoints = [
+  {
+    title: '行业 + AI',
+    desc: '水利与工业场景的数据理解，从真实业务问题出发做模型，而不是只会刷题。',
+  },
+  {
+    title: '作品可验证',
+    desc: '每个项目都有代码、Demo 与可复现的指标，经得起现场演示和深挖。',
+  },
+  {
+    title: '持续学习',
+    desc: '以周为单位推进项目，踩过的坑全部写成博客，成长路径清晰可见。',
+  },
+];
+---
+
+<BaseLayout>
+  <section class="relative overflow-hidden">
+    <div
+      class="pointer-events-none absolute inset-0 opacity-60"
+      style="background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:44px 44px;mask-image:radial-gradient(ellipse 75% 65% at 50% 0%,#000 35%,transparent 100%)"
+      aria-hidden="true"
+    ></div>
+    <div class="relative mx-auto grid max-w-5xl gap-10 px-4 pb-16 pt-14 sm:px-6 lg:grid-cols-2 lg:items-center lg:pt-24">
+      <div>
+        <p class="mb-4 inline-flex items-center gap-2 rounded-full border border-app bg-card px-3 py-1 font-mono text-xs text-accent">
+          <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+          {SITE.role} · 求职中
+        </p>
+        <h1 class="text-4xl font-bold leading-tight sm:text-5xl">
+          {SITE.brand}
+          <span class="block text-accent">· {SITE.name}</span>
+        </h1>
+        <p class="mt-4 text-lg text-muted">{SITE.tagline}</p>
+        <p class="mt-3 max-w-md text-muted">
+          水利智能管理专业出身，自学 AI，专注把模型落地到水利与工业场景。作品见下方项目，简历可一键下载。
+        </p>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a href="/projects/" class="rounded-lg bg-accent px-4 py-2.5 font-medium text-slate-950 transition-opacity hover:opacity-85">
+            查看项目
+          </a>
+          <a href={SITE.resume} download class="rounded-lg border border-app px-4 py-2.5 font-medium transition-colors hover:bg-card2">
+            下载简历
+          </a>
+        </div>
+      </div>
+      <div class="reveal">
+        <HeroChart />
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-5xl px-4 py-14 sm:px-6">
+    <h2 class="text-2xl font-bold">为什么你可以相信我</h2>
+    <div class="mt-6 grid gap-4 sm:grid-cols-3">
+      {
+        sellingPoints.map((point) => (
+          <div class="reveal rounded-xl border border-app bg-card p-5 shadow-app">
+            <h3 class="font-bold text-accent">{point.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted">{point.desc}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-5xl px-4 pb-16 sm:px-6">
+    <div class="mb-6 flex items-end justify-between gap-4">
+      <div>
+        <h2 class="text-2xl font-bold">项目作品</h2>
+        <p class="mt-1 text-sm text-muted">用真实项目证明能力，代码开源、指标可复现</p>
+      </div>
+      <a href="/projects/" class="shrink-0 text-sm text-accent hover:underline">全部项目 →</a>
+    </div>
+    {featured && <ProjectCard entry={featured} />}
+  </section>
+
+  <section class="border-t border-app bg-card2/60">
+    <div class="mx-auto flex max-w-5xl flex-col items-center gap-4 px-4 py-14 text-center sm:px-6">
+      <h2 class="text-2xl font-bold">能为你带来什么</h2>
+      <p class="max-w-2xl text-muted">行业数据理解 + 能落地的模型应用能力 + 踏实肯学的执行态度，上手快、坐得住、能交付。</p>
+      <a href="/contact/" class="rounded-lg bg-accent px-5 py-2.5 font-medium text-slate-950 transition-opacity hover:opacity-85">
+        联系我
+      </a>
+    </div>
+  </section>
+</BaseLayout>

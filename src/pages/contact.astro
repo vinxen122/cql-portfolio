@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../data/site';
+
+const channels = [
+  {
+    label: 'QQ 邮箱',
+    value: SITE.email,
+    href: `mailto:${SITE.email}`,
+    desc: '发邮件，工作日 24 小时内回复',
+  },
+  {
+    label: '电话',
+    value: SITE.phone,
+    href: `tel:${SITE.phone}`,
+    desc: '直接电话沟通（如留真实号码，请自行更新）',
+  },
+  {
+    label: 'GitHub',
+    value: SITE.github.replace('https://', ''),
+    href: SITE.github,
+    desc: '查看全部项目源码与提交记录',
+  },
+];
+---
+
+<BaseLayout title="联系我" description={`联系 ${SITE.name}（CQL）：邮箱、电话、GitHub。`}>
+  <div class="mx-auto max-w-3xl px-4 py-14 sm:px-6">
+    <p class="mb-3 font-mono text-sm text-accent">contact / 联系我</p>
+    <h1 class="text-3xl font-bold sm:text-4xl">联系我</h1>
+    <p class="mt-3 text-muted">如果我的方向与你的团队匹配，欢迎通过以下任一方式联系，工作日 24 小时内回复。</p>
+
+    <div class="mt-10 space-y-4">
+      {
+        channels.map((channel) => (
+          <a
+            href={channel.href}
+            target={channel.href.startsWith('http') ? '_blank' : undefined}
+            rel={channel.href.startsWith('http') ? 'noopener' : undefined}
+            class="reveal flex items-center justify-between gap-4 rounded-xl border border-app bg-card p-5 shadow-app transition-transform hover:-translate-y-0.5"
+          >
+            <div>
+              <p class="font-bold">{channel.label}</p>
+              <p class="mt-1 text-sm text-muted">{channel.desc}</p>
+            </div>
+            <p class="shrink-0 font-mono text-sm text-accent">{channel.value}</p>
+          </a>
+        ))
+      }
+    </div>
+
+    <div class="mt-10 rounded-xl border border-app bg-card p-6 text-center shadow-app">
+      <h2 class="text-lg font-bold">想要一份 PDF 简历？</h2>
+      <p class="mt-2 text-sm text-muted">可直接下载，也欢迎先看看项目再决定。</p>
+      <a href={SITE.resume} download class="mt-4 inline-block rounded-lg bg-accent px-5 py-2.5 font-medium text-slate-950 transition-opacity hover:opacity-85">
+        下载简历
+      </a>
+    </div>
+  </div>
+</BaseLayout>

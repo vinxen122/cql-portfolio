@@ -1,0 +1,17 @@
+---
+import { SITE } from '../data/site';
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-app py-8">
+  <div class="mx-auto flex max-w-5xl flex-col items-center gap-2 px-4 text-center text-sm text-muted sm:px-6">
+    <p>© {year} {SITE.brand} · {SITE.name} · {SITE.role}</p>
+    <p class="flex items-center gap-3">
+      <a href={`mailto:${SITE.email}`} class="hover:text-app">邮箱</a>
+      <span aria-hidden="true">·</span>
+      <a href={SITE.github} target="_blank" rel="noopener" class="hover:text-app">GitHub</a>
+      <span aria-hidden="true">·</span>
+      <a href={SITE.resume} download class="hover:text-app">简历</a>
+    </p>
+  </div>
+</footer>

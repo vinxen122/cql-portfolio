@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout title="项目作品" description="CQL 的项目作品：河道水位预测、水面漂浮物检测等 AI 应用项目。">
+  <div class="mx-auto max-w-5xl px-4 py-14 sm:px-6">
+    <p class="mb-3 font-mono text-sm text-accent">projects / 项目作品</p>
+    <h1 class="text-3xl font-bold sm:text-4xl">项目作品</h1>
+    <p class="mt-3 max-w-2xl text-muted">
+      每个项目都从真实问题出发，包含数据、模型和可视化完整链路。代码开源、指标以实测为准，详情页持续更新。
+    </p>
+
+    <div class="mt-10 grid gap-6 lg:grid-cols-2">
+      {projects.map((entry) => <ProjectCard entry={entry} />)}
+    </div>
+
+    <div class="mt-14 rounded-xl border border-app bg-card p-6 shadow-app">
+      <h2 class="text-lg font-bold">路线图</h2>
+      <ul class="mt-4 space-y-3 text-sm text-muted">
+        <li class="flex gap-3"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span><span><b class="text-app">2026.08</b>：水位预测上线，网站与简历同步更新，开始投递。</span></li>
+        <li class="flex gap-3"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span><span><b class="text-app">2026.10</b>：水面漂浮物检测完成并上线，替换占位图。</span></li>
+        <li class="flex gap-3"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span><span><b class="text-app">持续</b>：每周 1 篇博客，按面试反馈迭代项目与内容。</span></li>
+      </ul>
+    </div>
+  </div>
+</BaseLayout>

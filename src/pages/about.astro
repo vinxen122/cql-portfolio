@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Monogram from '../components/Monogram.astro';
+import { SITE } from '../data/site';
+---
+
+<BaseLayout title="关于我" description={`${SITE.name}（CQL）的故事：从水利智能管理专业到 AI 应用工程师。`}>
+  <div class="mx-auto max-w-3xl px-4 py-14 sm:px-6">
+    <p class="mb-3 font-mono text-sm text-accent">about / 关于我</p>
+    <h1 class="text-3xl font-bold sm:text-4xl">从水利专业，走向 AI 应用</h1>
+
+    <div class="mt-10 grid gap-8 sm:grid-cols-[auto_1fr] sm:items-start">
+      <Monogram />
+      <div class="rounded-xl border border-app bg-card p-5 shadow-app">
+        <h2 class="font-bold">基本信息</h2>
+        <dl class="mt-3 space-y-2 text-sm">
+          <div class="flex gap-3"><dt class="w-16 shrink-0 text-muted">姓名</dt><dd>{SITE.name}（{SITE.brand}）</dd></div>
+          <div class="flex gap-3"><dt class="w-16 shrink-0 text-muted">方向</dt><dd>{SITE.role}</dd></div>
+          <div class="flex gap-3"><dt class="w-16 shrink-0 text-muted">教育</dt><dd>浙江同济科技职业学院 · 水利水电智能管理（专科）</dd></div>
+          <div class="flex gap-3"><dt class="w-16 shrink-0 text-muted">邮箱</dt><dd><a href={`mailto:${SITE.email}`} class="text-accent hover:underline">{SITE.email}</a></dd></div>
+          <div class="flex gap-3"><dt class="w-16 shrink-0 text-muted">GitHub</dt><dd><a href={SITE.github} target="_blank" rel="noopener" class="text-accent hover:underline">{SITE.github.replace('https://', '')}</a></dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="prose mt-12">
+      <h2>我是谁</h2>
+      <p>
+        我是 {SITE.name}，2005 年出生，浙江同济科技职业学院水利水电智能管理专业毕业。在校期间系统学习过数据库、PLC
+        自动化、无人机应用和水利信息化等课程。这些经历让我很早意识到：传统行业正在被「数据 + 模型」重塑。
+      </p>
+
+      <h2>为什么转向 AI</h2>
+      <p>
+        水利行业有大量的传感器数据、遥感影像和历史水位记录，但很多决策仍然依赖人工经验。我接触得越多越确信：
+        未来十年，能把这些数据变成预测和决策的工程师会越来越有价值。2025 年毕业后，我决定把「理解行业数据」这件事做到底，
+        系统自学 Python、机器学习和 AI 应用开发。
+      </p>
+
+      <h2>我在做什么</h2>
+      <p>我坚持「以项目带学习」的方式推进，而不是只刷教程：</p>
+      <ul>
+        <li>河道水位智能预测系统：从公开水文数据出发，完成清洗、特征工程、时序建模到可视化大屏的完整链路；</li>
+        <li>水面漂浮物检测（无人机视角）：用 YOLOv8 识别河道漂浮垃圾，把无人机专业背景变成视觉 AI 项目；</li>
+        <li>每周输出一篇技术博客，记录踩坑过程，让成长路径可验证。</li>
+      </ul>
+
+      <h2>现在的状态</h2>
+      <p>
+        正在求职 AI 工程师（应用向）岗位。我的定位不是算法研究员，而是能把模型落地到真实业务里的应用型工程师：
+        数据管道能搭、模型能训、Demo 能跑、问题能讲清楚。如果你在做 AI + 行业落地的事，欢迎聊聊。
+      </p>
+    </div>
+  </div>
+</BaseLayout>

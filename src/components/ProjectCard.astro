@@ -1,0 +1,80 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import HeroChart from './HeroChart.astro';
+
+interface Props {
+  entry: CollectionEntry<'projects'>;
+}
+
+const { entry } = Astro.props;
+const { data } = entry;
+const isActive = data.status === 'active';
+---
+
+<article class="reveal flex flex-col overflow-hidden rounded-xl border border-app bg-card shadow-app transition-transform hover:-translate-y-0.5">
+  <div class="p-5">
+    {isActive ? (
+      <HeroChart />
+    ) : (
+      <div class="flex aspect-[16/9] items-center justify-center rounded-xl border border-dashed border-app bg-card2">
+        <div class="text-center">
+          <svg class="mx-auto mb-2 h-8 w-8 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="23 4 23 10 17 10" />
+            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10" />
+          </svg>
+          <p class="text-sm font-medium">项目进行中</p>
+          <p class="mt-1 text-xs text-muted">完成数据与模型后，这里将展示 Demo 截图</p>
+        </div>
+      </div>
+    )}
+  </div>
+
+  <div class="flex flex-1 flex-col gap-3 p-5 pt-0">
+    <div class="flex items-start justify-between gap-3">
+      <div>
+        <h3 class="text-lg font-bold">{data.title}</h3>
+        <p class="mt-0.5 text-sm text-muted">{data.subtitle}</p>
+      </div>
+      <span
+        class:list={[
+          'shrink-0 rounded-full px-2.5 py-0.5 text-xs font-medium',
+          isActive ? 'bg-accent-soft text-accent' : 'bg-card2 text-muted',
+        ]}
+      >
+        {isActive ? '已上线' : '进行中'}
+      </span>
+    </div>
+
+    <div class="flex flex-wrap gap-1.5">
+      {data.tech.map((t) => (
+        <span class="rounded-md border border-app px-2 py-0.5 font-mono text-xs text-muted">{t}</span>
+      ))}
+    </div>
+
+    <div class="mt-auto">
+      <div class="mb-3 grid grid-cols-3 gap-2">
+        {data.metrics.map((m) => (
+          <div class="rounded-lg border border-app bg-card2 px-2 py-2 text-center">
+            <p class="text-sm font-bold text-accent">{m.value}</p>
+            <p class="mt-0.5 text-[11px] leading-tight text-muted">{m.label}</p>
+          </div>
+        ))}
+      </div>
+      <div class="flex flex-wrap gap-2 text-sm">
+        <a href={`/projects/#${entry.id}`} class="inline-flex items-center gap-1 font-medium text-accent hover:underline">
+          查看详情
+        </a>
+        {data.github && (
+          <a href={data.github} target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-muted hover:text-app">
+            GitHub
+          </a>
+        )}
+        {data.demo && (
+          <a href={data.demo} target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-muted hover:text-app">
+            Demo
+          </a>
+        )}
+      </div>
+    </div>
+  </div>
+</article>
